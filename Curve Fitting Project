@@ -1,0 +1,57 @@
+import math
+import matplotlib.pyplot as plt 
+import numpy as np 
+from scipy.optimize import curve_fit
+
+#curve fit function
+
+#For Linear Equation
+
+def func(t,a,b,c,):
+	return a*pow(t,2) + b*t + c
+
+#For Cubic equation
+
+def fun1(t,a,b,c,d):
+	return a*pow(t,3) + b*pow(t,2) + c*t + d
+
+#reading thermodynamic data file 
+def read_file():
+	temperature = []
+	cp = []
+	for line in open('data','r'):
+		values = line.split(',')
+		temperature.append(float(values[0]))
+		cp.append(float(values[1]))
+	return[temperature,cp]
+
+#Main program for Linear equation
+temperature, cp  = read_file()
+popt, pcov = curve_fit(func,temperature,cp)
+fit_cp = func(np.array(temperature), *popt)
+
+#Main program for Cubic equation
+temperature, cp  = read_file()
+popt1, pcov1 = curve_fit(fun1,temperature,cp)
+fit_cp1 = fun1(np.array(temperature), *popt1)
+
+plt.figure(1)
+plt.plot(temperature,cp, color= "blue", linewidth =3)
+plt.plot(temperature,fit_cp,color="red", linewidth= 3)
+plt.legend(['Actual data','Curve fit for linear'])
+plt.xlabel('Temp [k]')
+plt.ylabel('Cp')
+
+plt.figure(2)
+
+plt.plot(temperature,cp, color= "blue", linewidth =3)
+plt.plot(temperature,fit_cp1,color="red", linewidth= 3)
+plt.legend(['Actual data','Curve fit for Cubic equation'])
+plt.xlabel('Temp [k]')
+plt.ylabel('Cp')
+
+
+
+plt.show()
+
+
