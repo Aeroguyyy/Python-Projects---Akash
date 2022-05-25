@@ -1,0 +1,26 @@
+
+import matplotlib.pyplot as plt 
+import numpy as np 
+
+x_start = 0
+y_start = 0
+num_values = 20
+
+x = []
+for i in range(0,num_values):
+	tempx = x_start + i
+	x.append(tempx)
+
+y = []
+for j in range(0,num_values):
+	tempy = y_start + j
+	y.append(tempy)
+
+print(x)
+print(y)
+
+b = np.array(x) + np.array(y)
+
+print(b)
+
+	
