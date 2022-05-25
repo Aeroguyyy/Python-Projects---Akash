@@ -1,0 +1,40 @@
+import math
+import matplotlib.pyplot as plt
+
+#Length of the aarm
+L1 = 1
+L2 = 0.5
+
+n_theta = 10
+theta_start = 0
+theta_end = math.pi/2
+
+theta1 = []
+theta2 = []
+
+for i in range(0,n_theta):
+	tmp = theta_start + i*(theta_end - theta_start)/(n_theta-1)
+	theta1.append(tmp)
+	theta2.append(tmp)
+
+X0 = 0
+Y0 = 0
+
+ct = 1
+for t1 in theta1:
+	for t2 in theta2:
+		X1 = L1*math.cos(t1)
+		Y1 = L2*math.sin(t1)
+
+		X2 = X1 + L2*math.cos(t2)
+		Y2 = Y1 + L2*math.sin(t2)
+
+		filename = str(ct) + '.png'
+		ct = ct + 1
+
+		plt.figure()
+		plt.plot([X0,X1],[Y0,Y1])
+		plt.plot([X1,X2],[Y1,Y2])
+		plt.xlim([0,2])
+		plt.ylim([0,2])
+		plt.savefig(filename)
