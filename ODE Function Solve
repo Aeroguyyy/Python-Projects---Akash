@@ -1,0 +1,26 @@
+import numpy as np 
+from scipy.integrate import odeint
+import matplotlib.pyplot as plt 
+import math
+
+	#function that returns
+def model(theta,t,b,g,l,m):
+	b = 0.02
+	g = 9.81
+	l = 1
+	m = 0.1
+	# Initial condition
+theta_0 = [math.pi/2,0]
+
+	#Time Points
+t = np.linspace(0,10,150)
+
+	#Solve ode
+theta = odeint(model,theta_0,t,args = (b,g,l,m))
+
+	#Plot results
+plt.plot(t,theta[:,0])
+plt.plot(t,theta[:,1])
+plt.xlabel('Plot')
+plt.ylabel('Time')
+plt.show()
