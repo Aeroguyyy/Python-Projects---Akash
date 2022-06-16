@@ -1,0 +1,99 @@
+import math
+import matplotlib.pyplot as plt 
+import numpy as np 
+import array as arr 
+import pandas as pd 
+
+
+#def add(a,b):
+	#return a + b 
+
+#def sub(a,b):
+	#return a - b 
+
+#def mul(a,b):
+	#return a * b 
+
+#def divide(a,b):
+	#return a/b 
+
+#def si(p,r,t) :  #Simple INterest
+	#return (p*r*t) / 100
+
+#def ci(P,R,T) :
+	#return P * pow((1 + R/100),T)
+
+#def sqr(num):
+	#return num**2
+
+#def st(num):
+	#return num** 0.5
+
+def DegreetoKelvin(celsius):
+	return celsius + 273
+
+def MachtoMetersec(mach):
+	return mach * 343
+
+
+def MachtoKilohour(mach1):
+	return mach1 * 1235
+
+def kilohrtoMach(km):
+	return km/1235
+
+def PascaltoBar(pressure):
+	return pressure/100000
+
+def PsitoBar(pressure):
+	return pressure/14.504
+
+def MetertoFeet(meter):
+	return meter* 3.281
+
+def FeettoKM(feet):
+	return feet/3281
+
+
+def Calculate_REno(rho,velocity,diameter,dynamic_viscosity):
+	return (rho*velocity*diameter/dynamic_viscosity)
+	if Calculate_REno <= 2000:
+		print("Laminar Flow")
+	elif Calculate_REno >= 2000:
+		print(" Turbluent Flow")
+	else:
+		print("Inavlid")
+
+
+###Strouhal Number Calculation
+
+#vortex_shedding freq = fst
+#Diameter = Dia
+#Velocity = U
+
+def StrouhalNo(fst,Dia,U):
+	return (fst * Dia /U)
+
+
+#Nusselt Number Calcualtion
+# H = Heat transer Coefficient
+# L = Plate Spacing
+# k = Thermal Conductivity
+def NusseltNo(H,L,K):
+	return (H * L/ K)
+
+#print(add(10,15))
+#print(mul(10,13))
+#print(si(10000,10,5))
+print(DegreetoKelvin(27))
+print(MachtoMetersec(2.15))
+print(MachtoKilohour(1.25))
+print(kilohrtoMach(2500))
+print(PascaltoBar(170000))
+print(PsitoBar(35))
+
+print(MetertoFeet(2000))
+print(FeettoKM(30000))
+print(Calculate_REno(998,5,0.50,0.0179))
+print(StrouhalNo(30,0.50,50))
+print(NusseltNo())
