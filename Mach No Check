@@ -1,0 +1,19 @@
+import math
+import numpy as np
+Import matplotlib.pyplot as plt 
+
+
+
+
+#Mach_no = 0
+def Calculate_Mach(Mach_no):
+	if Mach_no <= 1: 
+		print('Subsonic')
+	elif Mach_no ==1:
+		print('Tansonic')
+	elif Mach_no <=5:
+		print('Supersonic')
+	elif Mach_no >=5:
+		print('Hypersonic')
+
+print(Calculate_Mach(20))
