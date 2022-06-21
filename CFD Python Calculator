@@ -17,49 +17,51 @@ import pandas as pd
 #def divide(a,b):
 	#return a/b 
 
-#def si(p,r,t) :  #Simple INterest
+#def si(p,r,t) :  #Simple INterest 	#Finding Simple INterest
 	#return (p*r*t) / 100
 
-#def ci(P,R,T) :
+#def ci(P,R,T) :			#Finding Compound INterest
 	#return P * pow((1 + R/100),T)
 
-#def sqr(num):
+#def sqr(num):				#Finding square of a Number
 	#return num**2
 
-#def st(num):
+#def st(num):				#Finding Square Root of a number 
 	#return num** 0.5
 
-def DegreetoKelvin(celsius):
+def DegreetoKelvin(celsius):		#Degree to Kelvin Convert
 	return celsius + 273
 
-def MachtoMetersec(mach):
+def MachtoMetersec(mach):		#Mach No to Metere/Sec Convert
 	return mach * 343
 
 
-def MachtoKilohour(mach1):
+def MachtoKilohour(mach1):		#Mach No to Kilometre Hour Convert
 	return mach1 * 1235
 
-def kilohrtoMach(km):
+def kilohrtoMach(km):			#Kilometre to Mach No Convert
 	return km/1235
 
-def PascaltoBar(pressure):
+def PascaltoBar(pressure):		#Pressure(Pa) to Bar Convert
 	return pressure/100000
 
-def PsitoBar(pressure):
+def PsitoBar(pressure):			#Pressure(Psi) to Bar Convert	
 	return pressure/14.504
 
-def MetertoFeet(meter):
+def MetertoFeet(meter):			#Meter to Feet COnvert
 	return meter* 3.281
 
-def FeettoKM(feet):
+def FeettoKM(feet):			#Feet to Kilometer Convert
 	return feet/3281
 
 
+### Reynold Number Calculation
+
 def Calculate_REno(rho,velocity,diameter,dynamic_viscosity):
 	return (rho*velocity*diameter/dynamic_viscosity)
-	if Calculate_REno <= 2000:
+	if Calculate_REno <= 2300:
 		print("Laminar Flow")
-	elif Calculate_REno >= 2000:
+	elif Calculate_REno >= 2300:
 		print(" Turbluent Flow")
 	else:
 		print("Inavlid")
@@ -85,6 +87,7 @@ def NusseltNo(H,L,K):
 #print(add(10,15))
 #print(mul(10,13))
 #print(si(10000,10,5))
+
 print(DegreetoKelvin(27))
 print(MachtoMetersec(2.15))
 print(MachtoKilohour(1.25))
