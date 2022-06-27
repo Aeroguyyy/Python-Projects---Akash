@@ -1,0 +1,85 @@
+
+#In determining the min cushion pressure needed to break a given thickenss
+
+
+import math
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+beta = 0.5         #Width of ice wedge
+r = 40             #Size of the Air cushionfeet
+sigma = 150*144    #1psft = 1psi * 144 #Tesnile Strength of ice
+
+height = [0.6,1.2,1.8,2.4,3,3.6,4.2] #thickeness of ice blocks
+
+a = ( 1 - pow(beta,2))
+b = 0.4*pow(beta,2)
+c = sigma/pow(r,2)
+d = pow(sigma,2)/(3*pow(r,4))
+e = pow((sigma/3*pow(r,2)),3)
+ 
+
+#fucntion of pressure
+def f(p,h):
+	return a* pow(p,3) + (b*h - c*pow(h,2))*pow(p,2) + d*p*pow(h,4) - e*pow(h,6)
+
+#Differenciate the function 
+def fprime(p,h):
+	return 3*a*pow(p,2)+2*(b*h - c*pow(h,2))*p + d*pow(h,4)
+
+alpha = 1  #Relaxation factor
+tol = 1e-6  #tolerance 
+pressure = []
+iteration = []
+
+for h in height:
+	ct = 1
+	#Intial guess value
+
+	p_i = 500
+	while (abs(f(p_i,h)) > tol):
+		p_i = p_i - alpha*((f(p_i,h))/(fprime(p_i,h)))
+		ct = ct +1
+	pressure.append(p_i)
+	iteration.append(ct)
+
+print( 'Thickness,h(ft)',':' ,'Minimum Pressure',':','Iterations')
+
+for j in range(0,7):
+	print(t[j],':', pressure[j], ':', iterations[j])
+
+
+
+plt.plot(height,pressure)
+plt.xlim([0,5])
+plt.ylim([0,0.3])
+plt.xlabel('Thickness')
+plt.ylabel('Pressure')
+
+plt.show()
+
+
+
+#Explantion:
+1. Collecting all the given inputs like beta,segma, thickness, relaxation factor.
+We then define fucntion and derivative as shown in the coding
+
+2. By using for lopp, calculate the min pressureand no of itertaion taking place
+3. The next interation is calulated by the above formula.append
+
+4. Then we repeat the above procedure and calculate the min pressure and non of itertaion taking place 
+for different thickness of ice.append
+5. Print and plot the relavant graphs.
+
+
+
+#Conclusion
+Newton Raphson method is used to fine the exact pressure required to breake the different
+thickness of ice
+Relaxation factor plays major rolein finding min pressure with less number of iteration.append
+
+From the above plots, if you give high relxation factor then it takes more number of itertioons as 
+well as you give very less factoor then it more iterations append.append
+
+So, for every thickness there must be optimum relaxation factor value.
